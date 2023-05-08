@@ -1,0 +1,40 @@
+{
+  "blogs": [
+    {
+      "title": "EXTERNAL SENDER: Do not open attachments or click on links unless you recognize and trust the sender. ",
+      "body": "Updates will be provided as details are available. Motorists should expect delays in the area or seek alternate routes.  Please drive carefully",
+      "author": "Vermont State Police - Williston PSAP",
+      "id": 3
+    },
+    {
+      "title": "my new website",
+      "body": "React Tutorial from Zero to Hero",
+      "author": "Ahmed",
+      "id": 4
+    },
+    {
+      "title": "Fitness Training Blog ",
+      "body": "Bulid Your muscles in one month",
+      "author": "Mahmoud",
+      "id": 5
+    },
+    {
+      "title": "Mobile App Blog ",
+      "body": "Buliding IOS App in one hour",
+      "author": "Mohamed",
+      "id": 6
+    },
+    {
+      "title": "variations of passages of Lorem",
+      "body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.",
+      "author": "ahmed",
+      "id": 13
+    },
+    {
+      "title": "New York, NY 10012, US",
+      "body": "Here you can use rows and columns to organize your footer.",
+      "author": "mohamed",
+      "id": 14
+    }
+  ]
+}
