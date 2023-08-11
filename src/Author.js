@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import {
   MDBCol,
   MDBContainer,
@@ -6,73 +6,67 @@ import {
   MDBCard,
   MDBCardText,
   MDBCardBody,
-  MDBCardImage,
   MDBTypography,
   MDBIcon,
 } from "mdb-react-ui-kit";
-
+import useFetch from "./useFetch";
+import { useParams } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 const Author = () => {
+  const { firstName } = useParams();
+  const {
+    data: author,
+    isLoading,
+    error,
+  } = useFetch("http://localhost:8080/api/v1/authors/name/"+firstName )
   return (
-    <section
-      className="vh-100"
-      style={{ backgroundColor: "#f4f5f7", maxWidth: "70vmax" }}
+    <div>
+        {isLoading && <Alert> Loading .... </Alert>}
+        {error && <Alert> {error.message} </Alert>}
+        {author &&
+        <section
+      className=" vh-70 vw-100 "
     >
-      <MDBContainer style={{ maxWidth: "70vmax" }}>
+      <MDBContainer className="vh-70">
         <MDBRow
-          className="justify-content-center align-items-center h-100"
-          style={{ maxWidth: "70vmax" }}
+          className="justify-content-center align-items-center"
         >
-          <MDBCol lg="6" className="mb-4 mb-lg-0">
-            <MDBCard className="mb-3" style={{ maxWidth: "70vmax" }}>
-              <MDBRow className="g-0">
+          <MDBCol >
+            <MDBCard className="mb-3">
+              <MDBRow>
                 <MDBCol
-                  md="4"
+                  md="3"
                   className="gradient-custom text-center text-white"
-                  style={{ maxWidth: "70vmax" }}
                 >
-                  <MDBCardImage
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
                     alt="Avatar"
-                    className="my-5"
-                    style={{ width: "80px" }}
-                    fluid
+                    style={{ width: "100px" , marginTop:100, marginBottom:50}}
+                    
                   />
-                  <MDBTypography tag="h5">Marie Horwitz</MDBTypography>
-                  <MDBCardText>Web Designer</MDBCardText>
-                  <MDBIcon far icon="edit mb-5" />
+                  <h4 tag="h5"> {author.firstName} {author.lastName} </h4>
+                  <h5>{author.jobTitle}</h5>
                 </MDBCol>
                 <MDBCol>
-                  <MDBCardBody>
-                    <MDBTypography tag="h6">Information</MDBTypography>
+                    <h5 style={{marginTop:40 , fontSize:"1.4rem" }} >Bio</h5>
                     <hr />
-                    <MDBRow className="pt-1">
-                      <MDBCol size="flex" className="mb-3">
-                        <MDBTypography tag="h6">Email</MDBTypography>
-                        <MDBCardText className="text-muted">
-                          info@example.com
-                        </MDBCardText>
-                      </MDBCol>
-                      <MDBCol size="flex" className="mb-3">
-                        <MDBTypography tag="h6">Phone</MDBTypography>
-                        <MDBCardText className="text-muted">
-                          123 456 789
-                        </MDBCardText>
-                      </MDBCol>
-                    </MDBRow>
-
-                    <MDBTypography tag="h6">Information</MDBTypography>
-                    <hr className="mt-0 mb-4" />
+                  <MDBCardBody>
+                    <MDBTypography style={{fontSize:"1.3rem", textAlign:"left"}}>
+                    <p>{author.bio}</p>
+                    </MDBTypography>
+                    <hr />
+                    <h4 style={{marginTop:40 , fontSize:"1.4rem" }} >Contact Info</h4 >
                     <MDBRow className="pt-1">
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Email</MDBTypography>
                         <MDBCardText className="text-muted">
-                          info@example.com
+                        {author.email}
                         </MDBCardText>
                       </MDBCol>
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Phone</MDBTypography>
                         <MDBCardText className="text-muted">
-                          123 456 789
+                          {author.phone}
                         </MDBCardText>
                       </MDBCol>
                     </MDBRow>
@@ -96,7 +90,9 @@ const Author = () => {
         </MDBRow>
       </MDBContainer>
     </section>
-  );
+    }
+    </div>
+   );
 };
 
 export default Author;

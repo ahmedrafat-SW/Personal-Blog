@@ -6,11 +6,40 @@ import {
   MDBCheckbox,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React ,{ useState } from "react";
 
 export const Login = () => {
+  
+  const navigate = useNavigate();
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+  const[errors, setErrors] = useState({});
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+
+    fetch('http://localhost:8080/api/v1/login',{
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({email, password})
+    }).then((response)=> {
+      if(response.ok){
+          navigate("/");
+      }else{
+        response.json().then((data)=>{
+          setErrors(data);
+        })
+      }
+    }).catch((error)=> {
+      console.log(error);
+    })
+
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <MDBRow className="mb-4">
         <MDBModalTitle>Sign In</MDBModalTitle>
       </MDBRow>
@@ -18,21 +47,24 @@ export const Login = () => {
         <MDBInput
           //   className="mb-4"
           type="email"
-          id="form3Example3"
+          value={email}
           label="Email address"
+          onChange={(e)=> setEmail(e.target.value)}
         />
+        {errors.email && <span>{errors.email}</span>}
         <MDBRow className="mb-4"></MDBRow>
         <MDBInput
           //   className="mb-4"
           type="password"
-          id="form3Example3"
+          value={password}
           label="Password"
-        ></MDBInput>
+          onChange={(e)=> setPassword(e.target.value)}
+        />
+        {errors.password && <span>{errors.password}</span>}
       </MDBRow>
       <MDBRow>
         <MDBCheckbox
           wrapperClass="d-flex justify-content-left mb-2 ml-4"
-          id="form3Example5"
           label="Stay Login"
           defaultChecked
         />

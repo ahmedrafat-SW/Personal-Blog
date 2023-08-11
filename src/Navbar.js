@@ -19,9 +19,8 @@ export const Navbar = () => {
           New Blog
         </Link>
         <Link to="/about"> About </Link>
-        <Link style={{ marginRight: 50 }} to="/signup">
-          {" "}
-          SignUp{" "}
+        <Link style={{ marginRight: 50 }} to="/login">
+          Sign In
         </Link>
       </div>
     </nav>

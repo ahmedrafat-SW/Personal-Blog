@@ -11,26 +11,27 @@ const BlogList = ({ blogs }) => {
     <div className="d-flex justify-content-center">
       <div className="blog-list justify-content-center">
         {blogs.map((blog) => (
-          <div className="blog-preview" key={blog.id}>
+          <div className="blog-preview" key={blog.blogId}>
             <Card className="mb-3" style={{ color: "#000" }}>
               <Card.Body>
-                <Link to={`/blogs/${blog.id}`}>
+                <Link to={`/blogs/${blog.blogId}`}>
                   <h2 className="fs-1 text" style={{ color: "#f1356d" }}>
-                    {blog.title}
+                    {blog.blogTitle}
                   </h2>
                 </Link>
-                <Card.Text className="fs-3 text">{blog.body}</Card.Text>
-                <Card.Subtitle className="fs-5 text" style={{ color: "blue" }}>
-                  <Link to="/author">{blog.author}</Link>
+                <Card.Text className="fs-5 text-left">{blog.blogBody}</Card.Text>
+                <Card.Subtitle className="fs-4 text" style={{ color: "blue" }}>
+                  <span>Written By: </span>
+                  <Link to={`/authors/${blog.author.firstName}`}>{blog.author.firstName} { blog.author.lastName}</Link>
                 </Card.Subtitle>
                 <Row>
                   <Col>
                     <Button
                       onClick={() => {
-                        navigate(`/blogs/${blog.id}`);
+                        navigate(`/blogs/${blog.blogId}`);
                       }}
                       className="mx-3 mt-4 ml-6"
-                      style={{ background: "#D81B60", color: "white" }}
+                      style={{ background: "#D81B60", color: "white", fontSize:"1rem" }}
                     >
                       View
                     </Button>

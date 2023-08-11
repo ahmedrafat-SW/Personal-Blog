@@ -12,20 +12,16 @@ import {
 
 const Commint = () => {
   return (
-    <MDBContainer className="mt-5">
-      <MDBRow
-        className="justify-content-center"
-        style={{ maxInlineSize: 1200 }}
-      >
-        <MDBCol md="40" lg="4">
+    <MDBContainer className="mt-5 mx-10">
+      <MDBRow className="flex justify-items-stretch w-full ">
+        <MDBCol className="w-auto">
           <MDBCard
-            className="shadow-0 border"
+            className="shadow-0 border w-auto"
             style={{
               backgroundColor: "#f0f2f5",
-              maxInlineSize: 1200,
             }}
           >
-            <MDBCardBody style={{ maxInlineSize: 1200 }}>
+            <MDBCardBody>
               <MDBInput
                 wrapperClass="mb-4"
                 placeholder="Type comment..."
@@ -41,10 +37,10 @@ const Commint = () => {
                       <MDBCardImage
                         src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
                         alt="avatar"
-                        width="25"
-                        height="25"
+                        width="50"
+                        height="50"
                       />
-                      <p className="small mb-0 ms-2">Martha</p>
+                      <p className="text-2xl mb-0 ms-2">Martha</p>
                     </div>
                     <div className="d-flex flex-row align-items-center">
                       <p className="small text-muted mb-0">Upvote?</p>

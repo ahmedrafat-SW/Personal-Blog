@@ -1,6 +1,5 @@
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
-import PhotoSlider from "./PhotoSlider";
 import { MDBRow, MDBBtn, MDBCol, MDBInput } from "mdb-react-ui-kit";
 import { Container, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,12 +9,11 @@ export const Home = () => {
     data: blogs,
     isLoading: loading,
     error,
-  } = useFetch("http://localhost:8080/blogs");
+  } = useFetch("http://localhost:8080/api/v1/blogs");
 
   return (
-    <div className="d-flex">
-      <Container>
-        {blogs && <PhotoSlider />}
+    <div>
+      <Container className="main-container">
         {error && <Alert>{error}</Alert>}
         {loading && <Alert> Looding ...... </Alert>}
         {blogs && <BlogList blogs={blogs} />}
@@ -31,7 +29,7 @@ export const Home = () => {
                 <MDBCol md="5" size="12" className="mb-4 mb-md-0">
                   <MDBInput
                     type="text"
-                    id="form5Example2"
+                    id="email"
                     label="Email address"
                   />
                 </MDBCol>
